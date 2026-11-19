@@ -23,7 +23,7 @@
 <h2>1. Resumen</h2>
 <ul>
 <li>No pedimos tu nombre real, correo, teléfono ni contraseña. Tu cuenta es <strong>anónima</strong>, salvo que elijas <strong>vincularla con Google</strong> para no perderla al cambiar de celular.</li>
-<li>Guardamos solo lo necesario para que puedas jugar en línea: un identificador anónimo, tu nombre de jugador, tu ranking, tus gemas y los datos de las partidas.</li>
+<li>Guardamos solo lo necesario para que puedas jugar en línea: un identificador anónimo, tu nombre de jugador, tu ranking, tus gemas, una copia de tus monedas y ayudas, y los datos de las partidas.</li>
 <li><strong>No vendemos tus datos.</strong></li>
 <li>Podés <strong>borrar tu cuenta y todos tus datos</strong> cuando quieras desde <strong>Ajustes → Borrar mi cuenta y mis datos</strong>, o pidiéndolo por correo (ver la sección 8).</li>
 </ul>
@@ -31,7 +31,7 @@
 <h3>2.1 Datos que se guardan solo en tu celular</h3>
 <p>Esto no sale de tu dispositivo y se borra si desinstalás la app o borrás tu cuenta:</p>
 <ul>
-<li>monedas, ajustes (tamaño de mesa, si hiciste el tutorial) y estadísticas locales;</li>
+<li>monedas, ayudas, ajustes (tamaño de mesa, si hiciste el tutorial) y estadísticas locales (si jugás en línea, también se guarda una copia en el servidor: ver 2.2);</li>
 <li>el historial de tus últimas 50 partidas;</li>
 <li>la sesión anónima que te identifica ante nuestro servidor.</li>
 </ul>
@@ -74,14 +74,31 @@
 <td>Recuperar tu cuenta en otro celular. Es opcional; no se muestra a otros jugadores</td>
 </tr>
 <tr>
+<td>Copia de tus monedas y ayudas</td>
+<td>Recuperarlas si pasás tu cuenta (vinculada con Google) a otro celular</td>
+</tr>
+<tr>
+<td>Compras de gemas: identificador de la compra y del pedido de Google Play, producto y fecha</td>
+<td>Acreditarte las gemas una sola vez y prevenir fraudes (ver 2.6)</td>
+</tr>
+<tr>
+<td>Si activás los avisos: el <strong>token de notificaciones</strong> de tu celular (Firebase Cloud Messaging)</td>
+<td>Avisarte cuando alguien te manda una solicitud de amistad o te invita a jugar</td>
+</tr>
+<tr>
 <td>Reacciones que mandás en la mesa (emojis y frases fijas)</td>
 <td>Mostrarlas a los demás jugadores de esa partida. Se ven solo unos segundos y no hay texto libre</td>
 </tr>
 </tbody>
 </table>
 <p>Además, nuestro proveedor de servidor registra datos técnicos de cada conexión (por ejemplo, <strong>dirección IP</strong>, fecha y hora) en sus registros de seguridad y funcionamiento.</p>
-<h3>2.3 Recordatorios (notificaciones)</h3>
-<p>Si lo permitís, la app programa en tu celular recordatorios para volver a jugar (por ejemplo, cuando tu bono diario está listo). Se programan <strong>en el propio celular</strong>: no se envían datos tuyos a ningún servidor para eso. Podés apagarlos en <strong>Ajustes → Recordatorios del bono diario</strong> o en los ajustes de Android.</p>
+<h3>2.3 Recordatorios y avisos (notificaciones)</h3>
+<p>Si lo permitís, la app usa dos tipos de notificaciones:</p>
+<ul>
+<li><strong>Recordatorios</strong> para volver a jugar (por ejemplo, cuando tu bono diario está listo). Se programan <strong>en el propio celular</strong>: no se envían datos tuyos a ningún servidor para eso. Se apagan en <strong>Ajustes → Recordatorios del bono diario</strong>.</li>
+<li><strong>Avisos de amigos</strong> (solicitudes de amistad, solicitudes aceptadas e invitaciones a jugar). Para mandarlos, guardamos el token de notificaciones de tu celular y se lo pasamos a <strong>Firebase Cloud Messaging</strong> (Google), que entrega el aviso. El aviso incluye el nombre de jugador de quien te escribió. Se apagan en <strong>Ajustes → Avisos de amigos e invitaciones</strong>; al apagarlos, borramos el token.</li>
+</ul>
+<p>También podés apagar todas las notificaciones de la app en los ajustes de Android.</p>
 <h3>2.4 Publicidad</h3>
 <p>La app muestra anuncios (un anuncio corto al terminar algunas partidas y videos opcionales que dan recompensas). Los anuncios los sirve <strong>Google AdMob</strong>, que puede recopilar y tratar:</p>
 <ul>
@@ -92,9 +109,10 @@
 <p>AdMob usa estos datos para mostrar anuncios, medir su rendimiento y prevenir fraudes. Si estás en una región que lo exige (por ejemplo, la Unión Europea, el Espacio Económico Europeo, el Reino Unido o Suiza), la app te pide permiso antes de usar datos para anuncios personalizados. Podés cambiar esa decisión desde la app. También podés restablecer o eliminar tu identificador de publicidad en los ajustes de Android (<strong>Ajustes → Privacidad → Anuncios</strong>).</p>
 <p>Más información: <a href="https://policies.google.com/technologies/partner-sites">Cómo usa Google la información de las apps que usan sus servicios</a>.</p>
 <h3>2.5 Compras dentro de la app</h3>
-<p>Si la app ofrece comprar gemas, el pago lo procesa <strong>Google Play</strong>. Nosotros <strong>no recibimos ni guardamos los datos de tu tarjeta ni de tu cuenta de Google</strong>. Solo recibimos de Google la confirmación de la compra (identificador del pedido y producto), que guardamos para acreditarte las gemas y prevenir fraudes.</p>
+<p>Las gemas se compran con dinero real a través de <strong>Google Play</strong>, que procesa el pago. Nosotros <strong>no recibimos ni guardamos los datos de tu tarjeta ni de tu cuenta de pago</strong>. Nuestro servidor le consulta a Google Play si la compra es válida y guarda la confirmación (identificador de la compra y del pedido, producto y fecha) para acreditarte las gemas <strong>una sola vez</strong> y prevenir fraudes. Si borrás tu cuenta, esa confirmación se conserva <strong>sin ningún dato que te identifique</strong>, solo para que el mismo pago no se pueda acreditar otra vez.</p>
+<p>Las monedas y las ayudas se compran con gemas o monedas dentro de la app. Ninguna moneda virtual se puede canjear por dinero ni por premios.</p>
 <h3>2.6 Lo que NO recopilamos</h3>
-<p>No accedemos a tus contactos, fotos, archivos, micrófono, cámara ni ubicación precisa. La app pide el permiso de <strong>acceso a internet</strong>, el de <strong>identificador de publicidad</strong> (anuncios) y, si aceptás, el de <strong>notificaciones</strong> (recordatorios).</p>
+<p>No accedemos a tus contactos, fotos, archivos, micrófono, cámara ni ubicación precisa. La app pide el permiso de <strong>acceso a internet</strong>, el de <strong>identificador de publicidad</strong> (anuncios), el de <strong>facturación de Google Play</strong> (compras) y, si aceptás, el de <strong>notificaciones</strong> (recordatorios y avisos).</p>
 <h2>3. Bases y finalidades</h2>
 <p>Tratamos los datos para:</p>
 <ul>
@@ -108,7 +126,9 @@
 <li><strong>Supabase Inc.</strong>: alojamiento de la base de datos y de la autenticación anónima. <a href="https://supabase.com/privacy">Política de privacidad de Supabase</a></li>
 <li><strong>Google LLC</strong>:</li>
 <li>publicidad (AdMob);</li>
-<li>distribución de la app y pagos (Google Play).</li>
+<li>distribución de la app y pagos (Google Play);</li>
+<li>entrega de avisos push (Firebase Cloud Messaging);</li>
+<li>inicio de sesión, si vinculás tu cuenta con Google.</li>
 </ul>
 <p><a href="https://policies.google.com/privacy">Política de privacidad de Google</a>
 - <strong>Otros jugadores</strong>: ven tu nombre de jugador y tu ranking, y las fichas que jugás en la mesa durante las partidas. En una partida, también ven las reacciones que mandás. Tus <strong>amigos</strong> ven, además, si estás en línea y qué estás haciendo (salvo que lo ocultes).
@@ -130,6 +150,18 @@
 <tr>
 <td>Salas y partidas terminadas o abandonadas</td>
 <td>Se borran solas a los <strong>30 días</strong></td>
+</tr>
+<tr>
+<td>Token de notificaciones</td>
+<td>Hasta que apagues los avisos, borres tu cuenta o desinstales la app (Firebase nos avisa y lo borramos)</td>
+</tr>
+<tr>
+<td>Avisos enviados</td>
+<td>Se borran a los <strong>7 días</strong></td>
+</tr>
+<tr>
+<td>Confirmación de compras de gemas</td>
+<td>Mientras exista la cuenta; después, sin datos que te identifiquen (para prevenir fraudes)</td>
 </tr>
 <tr>
 <td>Salas en espera que nunca empezaron</td>
